@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+body {
+  background-color: rgba(244, 235, 235, .3);
+}
+
+.btn-add {
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.teacher-avatar {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.teacher-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 15ch;
+}

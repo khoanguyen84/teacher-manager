@@ -37,13 +37,17 @@ function TeacherProfile() {
 
     const handleRemoveTeacher = async (id) => {
         try {
-            let deleteRes = await TeacherService.deleteTeacher(id);
-            if(deleteRes.data){
-                toast.info(`Teacher name: ${deleteRes.data.name} removed success`);
-                navigate("/teacher-manager")
+            let confirmed = window.confirm("Are you sure to remove this teacher?")
+            if (confirmed) {
+                let deleteRes = await TeacherService.deleteTeacher(id);
+                if (deleteRes.data) {
+                    toast.info(`Teacher name: ${deleteRes.data.name} removed success`);
+                    navigate("/teacher-manager")
+                }
             }
+
         } catch (error) {
-            
+
         }
     }
     const { teacher, department, loading } = state;

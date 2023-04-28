@@ -17,6 +17,11 @@ body {
   width: 80px;
   border-radius: 50%;
 }
+.teacher-avatar-lg {
+  width: 230px;
+  height: 250px;
+  border-radius: 10px;
+}
 
 .teacher-name {
   overflow: hidden;

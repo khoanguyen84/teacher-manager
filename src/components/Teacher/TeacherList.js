@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TeacherService from "../../Services/teacherService";
 import Spinner from '../Layout/Spinner';
 import DepartmentService from "../../Services/departmentService";
+import { Link } from "react-router-dom";
 
 function TeacherList() {
     const [state, setState] = useState({
@@ -42,7 +43,7 @@ function TeacherList() {
         })
     }
     const getDepartmentById = (departId) => {
-        let result = state.departments.filter((item) => item.id == departId)
+        let result = state.departments.find((item) => item.id == departId);
         return result
     }
     const { teachers, departments, loading } = state;
@@ -63,10 +64,10 @@ function TeacherList() {
                         </form>
                     </div>
                     <div>
-                        <button className="btn btn-primary btn-add">
+                        <Link to={"/teacher-manager/create"} className="btn btn-primary btn-add">
                             <i className="fa fa-user-plus me-2"></i>
                             New Teacher
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -82,7 +83,7 @@ function TeacherList() {
                                             <div className="d-flex flex-column align-items-start">
                                                 <h5 className="fw-bolder teacher-name">{teacher.name}</h5>
                                                 <p className="text-muted">{getDepartmentById(teacher.departmentId).departName}</p>
-                                                <a href="">View profile</a>
+                                                <Link to={`/teacher-manager/profile/${teacher.id}`}>View profile</Link>
                                             </div>
                                         </div>
                                     </div>

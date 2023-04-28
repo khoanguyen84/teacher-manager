@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/teacher-manager/static/css/main.15492ce1.css",
-    "main.js": "/teacher-manager/static/js/main.f9d88e4e.js",
+    "main.js": "/teacher-manager/static/js/main.89dd0e1c.js",
     "static/media/fa-solid-900.ttf": "/teacher-manager/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
     "static/media/fa-brands-400.ttf": "/teacher-manager/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
     "static/media/fa-solid-900.woff2": "/teacher-manager/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
@@ -12,10 +12,10 @@
     "static/media/fa-v4compatibility.woff2": "/teacher-manager/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
     "index.html": "/teacher-manager/index.html",
     "main.15492ce1.css.map": "/teacher-manager/static/css/main.15492ce1.css.map",
-    "main.f9d88e4e.js.map": "/teacher-manager/static/js/main.f9d88e4e.js.map"
+    "main.89dd0e1c.js.map": "/teacher-manager/static/js/main.89dd0e1c.js.map"
   },
   "entrypoints": [
     "static/css/main.15492ce1.css",
-    "static/js/main.f9d88e4e.js"
+    "static/js/main.89dd0e1c.js"
   ]
 }

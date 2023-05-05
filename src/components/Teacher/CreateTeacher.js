@@ -4,14 +4,24 @@ import DepartmentService from "../../Services/departmentService";
 import noavatar from '../../assets/images/noavatar.png';
 import TeacherService from "../../Services/teacherService";
 import { toast } from 'react-toastify';
+import FileService from "../../Services/fileService";
 
 function CreateTeacher() {
     const [state, setState] = useState({
-        teacher: {},
+        teacher: {
+            name: "",
+            email: "",
+            avatar: "",
+            mobile: "",
+            departmentId: 1
+        },
         departments: [],
         loading: false
     })
-
+    const [avatar, setAvatar] = useState({
+        file: null,
+        upload : false
+    })
     useEffect(() => {
         try {
             setState({ ...state, loading: true })
@@ -59,6 +69,42 @@ function CreateTeacher() {
 
         } catch (error) {
             console.log(error.message);
+
+        }
+    }
+    const handleSelectAvatar = (e) => {
+        let urlFakeAvatar = URL.createObjectURL(e.target.files[0])
+        setAvatar({...avatar, file: e.target.files[0]})
+        setState({
+            ...state,
+            teacher: {
+                ...teacher,
+                avatar: urlFakeAvatar
+            }
+        })
+    }
+    const handleUploadAvatar = () => {
+        try {
+            if (avatar.file) {
+                setAvatar({ ...avatar, upload: true})
+                async function uploadAvatar() {
+                    let uploadRes = await FileService.fileUpload(avatar.file);
+                    if (uploadRes.data) {
+                        state.teacher.avatar = uploadRes.data.url;
+                        toast.info('Avatar uploaded success');
+                    }
+                    setAvatar({
+                        ...avatar,
+                        upload: false,
+                        file: null
+                    })
+                }
+                uploadAvatar();
+            }
+            else {
+                toast.warn('Please select file!')
+            }
+        } catch (error) {
 
         }
     }
@@ -119,23 +165,36 @@ function CreateTeacher() {
                                     </select>
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="avatar" className="form-label">Avatar</label>
-                                    <input type="url" className="form-control" id="avatar"
-                                        name="avatar"
-                                        value={teacher.avatar}
-                                        onInput={handleInput}
-                                        required
-                                    />
-                                </div>
-                                <div className="mb-3">
                                     <button className="btn btn-danger me-2"
                                     >Create</button>
                                     <Link className="btn btn-secondary" to={"/teacher-manager"}>Cancel</Link>
                                 </div>
                             </form>
                         </div>
-                        <div className="col-md-3">
-                            <img className="teacher-avatar-lg" src={teacher.avatar || noavatar} alt="" />
+                        <div className="col-md-3 d-flex flex-column align-items-center">
+                            <div className="avatar-container">
+                                <img role="button" className="teacher-avatar-lg avatar-hover" src={teacher.avatar || noavatar} alt=""
+                                    onClick={() => document.getElementById('fileAvatar').click()}
+                                />
+                                <span>Select Avatar</span>
+                            </div>
+                            {
+                                avatar.upload ? (
+                                    <button className="btn btn-primary btn-sm" type="button" disabled>
+                                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+                                        Loading...
+                                    </button>) : (
+                                    <button className="btn btn-primary btn-sm" type="button"
+                                        onClick={handleUploadAvatar}
+                                    >
+                                        <i className="fa fa-upload me-2"></i>
+                                        Upload
+                                    </button>
+                                )
+                            }
+                            <input type="file" id="fileAvatar" accept="image/*" className="d-none"
+                                onChange={handleSelectAvatar}
+                            />
                         </div>
                     </div>
                 </div>

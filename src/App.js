@@ -4,6 +4,7 @@ import Navbar from './components/Layout/Navbar';
 import TeacherList from './components/Teacher/TeacherList';
 import TeacherProfile from './components/Teacher/TeacherProfile';
 import CreateTeacher from './components/Teacher/CreateTeacher';
+import UpdateTeacher from './components/Teacher/UpdateTeacher';
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           <Route path='/teacher-manager' element={<TeacherList />} />
           <Route path='/teacher-manager/create' element={<CreateTeacher />} />
           <Route path='/teacher-manager/profile/:teacherId' element={<TeacherProfile />} />
+          <Route path='/teacher-manager/update/:teacherId' element={<UpdateTeacher />} />
         </Routes>
       </div>
     </>

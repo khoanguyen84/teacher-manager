@@ -29,3 +29,23 @@ body {
   text-overflow: ellipsis;
   max-width: 15ch;
 }
+
+.avatar-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-hover + span{
+  display: none;
+  position: absolute;
+  background: rgb(238, 234, 234);
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.avatar-hover:hover + span{
+  display: block;
+}

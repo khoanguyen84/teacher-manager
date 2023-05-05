@@ -3,6 +3,7 @@ import TeacherService from "../../Services/teacherService";
 import Spinner from '../Layout/Spinner';
 import DepartmentService from "../../Services/departmentService";
 import { Link } from "react-router-dom";
+import noavatar from '../../assets/images/noavatar.png';
 
 function TeacherList() {
     const [state, setState] = useState({
@@ -79,7 +80,7 @@ function TeacherList() {
                                 teachers.map((teacher) => (
                                     <div key={teacher.id} className="col-md-3 mb-4">
                                         <div className="card py-3 d-flex flex-row align-items-center justify-content-around">
-                                            <img className="teacher-avatar" src={teacher.avatar} alt="" />
+                                            <img className="teacher-avatar" src={teacher.avatar || noavatar} alt="" />
                                             <div className="d-flex flex-column align-items-start">
                                                 <h5 className="fw-bolder teacher-name">{teacher.name}</h5>
                                                 <p className="text-muted">{getDepartmentById(teacher.departmentId).departName}</p>

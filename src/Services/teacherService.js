@@ -13,6 +13,10 @@ class TeacherService{
         return axios.post('https://6449deff79279846dcd9e0f6.mockapi.io/teacher', teacher)
     }
 
+    static updateTeacher(teacher, teacherId){
+        return axios.put(`https://6449deff79279846dcd9e0f6.mockapi.io/teacher/${teacherId}`, teacher)
+    }
+
     static deleteTeacher(teacherId){
         return axios.delete(`https://6449deff79279846dcd9e0f6.mockapi.io/teacher/${teacherId}`)
     }

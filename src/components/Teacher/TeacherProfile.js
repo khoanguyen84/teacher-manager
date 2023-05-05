@@ -4,6 +4,7 @@ import TeacherService from "../../Services/teacherService";
 import DepartmentService from "../../Services/departmentService";
 import Spinner from "../Layout/Spinner";
 import { toast } from "react-toastify";
+import noavatar from '../../assets/images/noavatar.png';
 function TeacherProfile() {
     const { teacherId } = useParams();
     const [state, setState] = useState({
@@ -68,7 +69,7 @@ function TeacherProfile() {
                         <div className="container">
                             <div className="row d-flex align-items-center">
                                 <div className="col-md-3 align-items-center">
-                                    <img className="rounded" src={teacher.avatar} alt="" />
+                                    <img className="rounded teacher-avatar-lg" src={teacher.avatar || noavatar} alt="" />
                                 </div>
                                 <div className="col-md-9">
                                     <h3 className="text-primary fw-bolder">{teacher.name}</h3>
@@ -84,12 +85,18 @@ function TeacherProfile() {
                                         <i className="fa fa-mobile me-2"></i>
                                         {teacher.mobile}
                                     </p>
-                                    <button className="btn btn-danger btn-sm"
+                                    <button className="btn btn-danger btn-sm me-2"
                                         onClick={() => handleRemoveTeacher(teacher.id)}
                                     >
                                         <i className="fa fa-trash me-2"></i>
                                         Remove Teacher
                                     </button>
+                                    <Link className="btn btn-warning btn-sm"
+                                        to={`/teacher-manager/update/${teacher.id}`}
+                                    >
+                                        <i className="fa fa-trash me-2"></i>
+                                        Update Teacher
+                                    </Link>
                                 </div>
                             </div>
                         </div>
